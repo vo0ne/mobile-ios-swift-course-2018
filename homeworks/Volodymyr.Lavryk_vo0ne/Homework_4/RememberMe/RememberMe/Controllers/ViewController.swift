@@ -13,16 +13,18 @@ class ViewController: UIViewController {
     lazy var game = Remember(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     
     @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
     
-    var flipsCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipsCount)"
+    @IBAction func newGamePressed(_ sender: UIButton) {
+        game.newGame()
+        for var card in game.cards {
+            card.isFaceUp = false
         }
+         updateViewFromModel()
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
-        flipsCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -32,7 +34,9 @@ class ViewController: UIViewController {
     }
     
     func updateViewFromModel() {
-        for index in cardButtons.indices {
+        scoreLabel.text = "Score \(game.score)"
+        flipCountLabel.text = "Flips: \(game.flips)"
+            for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
             if card.isFaceUp {
