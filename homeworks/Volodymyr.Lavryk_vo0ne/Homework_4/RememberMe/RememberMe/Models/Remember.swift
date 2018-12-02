@@ -38,14 +38,14 @@ class Remember {
                 indexOfOneAndOnlyFaceUpCard = nil
             } else {
                 // If no card or two cards face up
-               
+                
                 for flipdownIndex in cards.indices {
                     cards[flipdownIndex].isFaceUp = false
                     
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
-                 score -= 1
+                score -= 1
             }
             
         }
@@ -58,6 +58,6 @@ class Remember {
         }
         score = 0
         flips = 0
-    cards.shuffle()
+        cards.shuffle()
     }
 }
