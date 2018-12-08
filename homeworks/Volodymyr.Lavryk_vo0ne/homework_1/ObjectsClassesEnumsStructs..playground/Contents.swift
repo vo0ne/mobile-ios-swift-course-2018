@@ -32,13 +32,11 @@ class Circle: NamedShape {
 
 var circle:Circle = Circle(name: "example", radius: 10.1)
 print(circle.simpleDescription())
+
 var square = circle.area
 print (square)
 
-
-
 //MARK: 2
-
 
 enum Rank: Int {
     case ace = 1
@@ -102,8 +100,10 @@ struct Card {
 }
 
 let card: Card  = Card(rank: .king, suit: .diamonds)
+
 print (card.suit.colorOf(suit: .clubs))
 print (card.simpleDescription())
+
 var deck = card.createDeck()
 for card in deck {
     print (card.simpleDescription())
